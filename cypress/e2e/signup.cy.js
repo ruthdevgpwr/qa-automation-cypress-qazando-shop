@@ -1,21 +1,13 @@
 /// <reference types="cypress" />
 
 import { user } from '../support/factories/userFactory'
+import commom_page from '../support/pages/commom_page'
 
 describe('Cadastro de usuário', () => {
 
   beforeEach(('Acessar tela de cadastro de usuário'), () => {
 
-    cy.visit('/')
-      .get('#top_header')
-      .should('be.visible')
-    
-    cy.get('.fa-lock')
-      .click()
-
-    cy.visit('/register')
-
-    cy.url().should('include', '/register')
+    commom_page.acessarCadastroUsurario()
 
   })
   it('Cadastro com sucesso', () => {
