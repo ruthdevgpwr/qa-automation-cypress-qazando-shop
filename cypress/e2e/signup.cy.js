@@ -11,19 +11,11 @@ describe('Cadastro de usuário', () => {
     commom_page.acessarCadastroUsurario()
 
   })
-  it.only('Cadastro com sucesso', () => {
-
-    cy.get('#user')
-      .type(user.dadosValidos.name)
-      .should('have.value', user.dadosValidos.name)
+  it('Cadastro com sucesso', () => {
     
-    cy.get('#email')
-      .type(user.dadosValidos.email)
-      .should('have.value', user.dadosValidos.email)
-    
-    cy.get('#password')
-      .type(user.dadosValidos.senha)
-      .should('have.value', user.dadosValidos.senha)
+    cadastro_usuario_page.preencherNome(user.dadosValidos.name)
+    cadastro_usuario_page.preencherEmail(user.dadosValidos.email)
+    cadastro_usuario_page.preencherSenha(user.dadosValidos.senha)
     
     cadastro_usuario_page.clicarCadastrar()
 
@@ -33,11 +25,8 @@ describe('Cadastro de usuário', () => {
   })
   it('Cadastro sem nome de usuário', () => {
 
-    cy.get('#email')
-      .type(user.dadosValidos.email)
-
-    cy.get('#password')
-      .type(user.dadosValidos.senha)
+    cadastro_usuario_page.preencherEmail(user.dadosValidos.email)
+    cadastro_usuario_page.preencherSenha(user.dadosValidos.senha)
     
     cadastro_usuario_page.clicarCadastrar()
     
@@ -45,14 +34,9 @@ describe('Cadastro de usuário', () => {
   })
   it('Cadastro informando email inválido', () => {
 
-    cy.get('#user')
-      .type(user.dadosValidos.name)
-
-    cy.get('#email')
-      .type(user.dadosInvalidos.emailInvalido)
-
-    cy.get('#password')
-      .type(user.dadosValidos.senha)
+    cadastro_usuario_page.preencherNome(user.dadosValidos.name)
+    cadastro_usuario_page.preencherEmail(user.dadosInvalidos.emailInvalido)
+    cadastro_usuario_page.preencherSenha(user.dadosValidos.senha)
     
     cadastro_usuario_page.clicarCadastrar()
     
@@ -60,11 +44,8 @@ describe('Cadastro de usuário', () => {
   })  
   it('Cadastro sem informar email', () => {
 
-    cy.get('#user')
-      .type(user.dadosValidos.name)
-
-    cy.get('#password')
-      .type(user.dadosValidos.senha)
+    cadastro_usuario_page.preencherNome(user.dadosValidos.name)
+    cadastro_usuario_page.preencherSenha(user.dadosValidos.senha)
 
     cadastro_usuario_page.clicarCadastrar()
 
@@ -78,41 +59,28 @@ describe('Cadastro de usuário', () => {
   })
   it('Cadastro sem informar senha', () => {
 
-    cy.get('#user')
-      .type(user.dadosValidos.name)
-    
-    cy.get('#email')
-      .type(user.dadosValidos.email)
-    
+    cadastro_usuario_page.preencherNome(user.dadosValidos.name)
+    cadastro_usuario_page.preencherEmail(user.dadosValidos.email)
+
     cadastro_usuario_page.clicarCadastrar()
-    
+
     cadastro_usuario_page.validarMensagemErro('O campo senha deve ter pelo menos 6 dígitos')
   })
   it('Cadastro com senha inválida', () => {
 
-    cy.get('#user')
-      .type(user.dadosValidos.name)
-    
-    cy.get('#email')
-      .type(user.dadosValidos.email)
-
-    cy.get('#password')
-      .type(user.dadosInvalidos.senhaInvalida)
+    cadastro_usuario_page.preencherNome(user.dadosValidos.name)
+    cadastro_usuario_page.preencherEmail(user.dadosValidos.email)
+    cadastro_usuario_page.preencherSenha(user.dadosInvalidos.senhaInvalida)
     
     cadastro_usuario_page.clicarCadastrar()
     
     cadastro_usuario_page.validarMensagemErro('O campo senha deve ter pelo menos 6 dígitos')
   })
-  it.only('Cadastro informando e-amail com letras maiúsculas', () => {
+  it('Cadastro informando e-amail com letras maiúsculas', () => {
 
-    cy.get('#user')
-      .type(user.dadosValidos.name)
-    
-    cy.get('#email')
-      .type(user.dadosValidos.email.toUpperCase())
-
-    cy.get('#password')
-      .type(user.dadosValidos.senha)
+    cadastro_usuario_page.preencherNome(user.dadosValidos.name)
+    cadastro_usuario_page.preencherEmail(user.dadosValidos.email.toUpperCase())
+    cadastro_usuario_page.preencherSenha(user.dadosValidos.senha)
     
     cadastro_usuario_page.clicarCadastrar()
     
