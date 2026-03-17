@@ -6,6 +6,24 @@ export default {
       .click()
   },
 
+  preencherNome(name) {
+    cy.get('#user')
+      .type(name)
+      .should('have.value', name)
+  },
+
+  preencherEmail(email) {
+    cy.get('#email')
+      .type(email)
+      .should('have.value', email)
+  },
+
+  preencherSenha(password) {
+    cy.get('#password')
+        .type(password)
+        .should('have.value', password)
+  },
+
   validarMensagemErro(mensagem) {
     cy.get('.errorLabel')
       .should('be.visible')
