@@ -11,7 +11,7 @@ describe('Cadastro de usuário', () => {
     commom_page.acessarCadastroUsurario()
 
   })
-  it('Cadastro com sucesso', () => {
+  it.only('Cadastro com sucesso', () => {
 
     cy.get('#user')
       .type(user.dadosValidos.name)
@@ -29,13 +29,7 @@ describe('Cadastro de usuário', () => {
 
     cy.url().should('include', '/my-account')
 
-    cy.get('.swal2-title')
-      .should('be.visible')
-      .should('have.text', 'Cadastro realizado!')
-
-    cy.get('.swal2-html-container')
-      .should('be.visible')
-      .should('have.text', `Bem-vindo ${user.dadosValidos.name}`)
+    cadastro_usuario_page.validarMensagemCadastroSucesso(user.dadosValidos.name)
   })
   it('Cadastro sem nome de usuário', () => {
 
@@ -109,7 +103,7 @@ describe('Cadastro de usuário', () => {
     
     cadastro_usuario_page.validarMensagemErro('O campo senha deve ter pelo menos 6 dígitos')
   })
-  it('Cadastro informando e-amail com letras maiúsculas', () => {
+  it.only('Cadastro informando e-amail com letras maiúsculas', () => {
 
     cy.get('#user')
       .type(user.dadosValidos.name)
@@ -124,13 +118,7 @@ describe('Cadastro de usuário', () => {
     
     cy.url().should('include', '/my-account')
 
-    cy.get('.swal2-title')
-      .should('be.visible')
-      .should('have.text', 'Cadastro realizado!')
-      
-    cy.get('.swal2-html-container')
-      .should('be.visible')
-      .should('have.text', `Bem-vindo ${user.dadosValidos.name}`) 
+    cadastro_usuario_page.validarMensagemCadastroSucesso(user.dadosValidos.name) 
 
   })
 })
