@@ -47,9 +47,7 @@ describe('Cadastro de usuário', () => {
     
     cadastro_usuario_page.clicarCadastrar()
     
-    cy.get('.errorLabel')
-      .should('be.visible')
-      .should('have.text', 'O campo nome deve ser prenchido')
+    cadastro_usuario_page.validarMensagemErro('O campo nome deve ser prenchido')
   })
   it('Cadastro informando email inválido', () => {
 
@@ -64,9 +62,7 @@ describe('Cadastro de usuário', () => {
     
     cadastro_usuario_page.clicarCadastrar()
     
-    cy.get('.errorLabel')
-      .should('be.visible')
-      .should('have.text', 'O campo e-mail deve ser prenchido corretamente')
+    cadastro_usuario_page.validarMensagemErro('O campo e-mail deve ser prenchido corretamente')
   })  
   it('Cadastro sem informar email', () => {
 
@@ -78,17 +74,13 @@ describe('Cadastro de usuário', () => {
 
     cadastro_usuario_page.clicarCadastrar()
 
-    cy.get('.errorLabel')
-      .should('be.visible')
-      .should('have.text', 'O campo e-mail deve ser prenchido corretamente')
+    cadastro_usuario_page.validarMensagemErro('O campo e-mail deve ser prenchido corretamente')
   }) 
   it('Cadastro com todos os campos vazios', () => {
 
     cadastro_usuario_page.clicarCadastrar()
 
-    cy.get('.errorLabel')
-      .should('be.visible')
-      .should('have.text', 'O campo nome deve ser prenchido')
+    cadastro_usuario_page.validarMensagemErro('O campo nome deve ser prenchido')
   })
   it('Cadastro sem informar senha', () => {
 
@@ -100,9 +92,7 @@ describe('Cadastro de usuário', () => {
     
     cadastro_usuario_page.clicarCadastrar()
     
-    cy.get('.errorLabel')
-      .should('be.visible')
-      .should('have.text', 'O campo senha deve ter pelo menos 6 dígitos')
+    cadastro_usuario_page.validarMensagemErro('O campo senha deve ter pelo menos 6 dígitos')
   })
   it('Cadastro com senha inválida', () => {
 
@@ -117,10 +107,7 @@ describe('Cadastro de usuário', () => {
     
     cadastro_usuario_page.clicarCadastrar()
     
-    cy.get('.errorLabel')
-      .should('be.visible')
-      .should('have.text', 'O campo senha deve ter pelo menos 6 dígitos')
-
+    cadastro_usuario_page.validarMensagemErro('O campo senha deve ter pelo menos 6 dígitos')
   })
   it('Cadastro informando e-amail com letras maiúsculas', () => {
 
