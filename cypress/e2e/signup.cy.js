@@ -1,6 +1,7 @@
 /// <reference types="cypress" />
 
 import { user } from '../support/factories/userFactory'
+import cadastro_usuario_page from '../support/pages/cadastro_usuario_page'
 import commom_page from '../support/pages/commom_page'
 
 describe('Cadastro de usuário', () => {
@@ -24,8 +25,7 @@ describe('Cadastro de usuário', () => {
       .type(user.dadosValidos.senha)
       .should('have.value', user.dadosValidos.senha)
     
-    cy.get('#btnRegister')
-      .click()
+    cadastro_usuario_page.clicarCadastrar()
 
     cy.url().should('include', '/my-account')
 
@@ -45,8 +45,7 @@ describe('Cadastro de usuário', () => {
     cy.get('#password')
       .type(user.dadosValidos.senha)
     
-    cy.get('#btnRegister')
-      .click()
+    cadastro_usuario_page.clicarCadastrar()
     
     cy.get('.errorLabel')
       .should('be.visible')
@@ -63,8 +62,7 @@ describe('Cadastro de usuário', () => {
     cy.get('#password')
       .type(user.dadosValidos.senha)
     
-    cy.get('#btnRegister')
-      .click()
+    cadastro_usuario_page.clicarCadastrar()
     
     cy.get('.errorLabel')
       .should('be.visible')
@@ -78,8 +76,7 @@ describe('Cadastro de usuário', () => {
     cy.get('#password')
       .type(user.dadosValidos.senha)
 
-    cy.get('#btnRegister')
-      .click()
+    cadastro_usuario_page.clicarCadastrar()
 
     cy.get('.errorLabel')
       .should('be.visible')
@@ -87,8 +84,7 @@ describe('Cadastro de usuário', () => {
   }) 
   it('Cadastro com todos os campos vazios', () => {
 
-    cy.get('#btnRegister')
-      .click()
+    cadastro_usuario_page.clicarCadastrar()
 
     cy.get('.errorLabel')
       .should('be.visible')
@@ -102,8 +98,7 @@ describe('Cadastro de usuário', () => {
     cy.get('#email')
       .type(user.dadosValidos.email)
     
-    cy.get('#btnRegister')
-      .click()
+    cadastro_usuario_page.clicarCadastrar()
     
     cy.get('.errorLabel')
       .should('be.visible')
@@ -120,8 +115,7 @@ describe('Cadastro de usuário', () => {
     cy.get('#password')
       .type(user.dadosInvalidos.senhaInvalida)
     
-    cy.get('#btnRegister')
-      .click()
+    cadastro_usuario_page.clicarCadastrar()
     
     cy.get('.errorLabel')
       .should('be.visible')
@@ -139,8 +133,7 @@ describe('Cadastro de usuário', () => {
     cy.get('#password')
       .type(user.dadosValidos.senha)
     
-    cy.get('#btnRegister')
-      .click()
+    cadastro_usuario_page.clicarCadastrar()
     
     cy.url().should('include', '/my-account')
 
