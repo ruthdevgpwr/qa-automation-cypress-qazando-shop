@@ -26,5 +26,12 @@ export default {
     cy.get('#swal2-html-container')
       .should('be.visible')
       .should('have.text', `Olá, ${email}`)
-  }
+  },
+
+  validarMensagemErro(mensagem) {
+
+    cy.get('.invalid_input')
+      .should('be.visible')
+      .should('have.text', mensagem)
+  },
 }
