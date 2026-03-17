@@ -18,7 +18,6 @@ export default {
   },
 
   validarMensagemSucessoLogin(email) {
-
     cy.get('#swal2-title')
           .should('be.visible')
           .should('have.text', 'Login realizado')
@@ -29,7 +28,6 @@ export default {
   },
 
   validarMensagemErro(mensagem) {
-
     cy.get('.invalid_input')
       .should('be.visible')
       .should('have.text', mensagem)
