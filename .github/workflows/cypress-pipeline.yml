@@ -11,11 +11,16 @@ jobs:
     steps:
       - name: Checkout/Clone do projeto
         uses: actions/checkout@v6
-      
+
       - name: Cypress run
         uses: cypress-io/github-action@v7
         with:
           record: true
         env: 
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}  
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
 
+      - name: Upload do relatório do moca
+        uses: actions/upload-artifact@v4
+        with: 
+          name: Relatório de teste
+          path: cypress\reports\html
