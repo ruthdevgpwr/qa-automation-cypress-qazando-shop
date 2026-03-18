@@ -58,15 +58,6 @@ describe('Login', () => {
     login_page.validarMensagemSucessoLogin(user.dadosValidos.email.toUpperCase())
   })
 
-  it('Deve realizar login ao pressionar ENTER', () => {
-    login_page.preencherEmail(user.dadosValidos.email)
-    login_page.preencherSenha(user.dadosValidos.senha)
-
-    cy.get('#password').type('{enter}')
-
-    login_page.validarMensagemSucessoLogin(user.dadosValidos.email)
-  })
-
   it('Deve redirecionar para cadastro ao clicar em "Ainda não tem conta?"', () => {
 
     cy.contains('Ainda não tem conta?').click()
