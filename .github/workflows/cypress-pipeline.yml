@@ -1,0 +1,21 @@
+name: Run Basic Testes
+
+on:
+  pull_request: 
+    branches: [main]
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout/Clone do projeto
+        uses: actions/checkout@v6
+      
+      - name: Cypress run
+        uses: cypress-io/github-action@v7
+        with:
+          record: true
+        env: 
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}  
+
