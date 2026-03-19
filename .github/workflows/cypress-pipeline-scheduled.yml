@@ -1,7 +1,7 @@
 name: Run Scheduled Tests
 
 on:
-  - schedule:
+  schedule:
     - cron: '0 20 * * 1-5'
 
 jobs:
